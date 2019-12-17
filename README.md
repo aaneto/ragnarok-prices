@@ -2,12 +2,16 @@
 
 A repository to scrap prices on ragnarok online ragial website.
 
-## What does the scrapper.py do?
+## How to run the program
 
-It downloads all the *live* items on sale on ragial, and then proceeds to download
-the historical prices of those items on ragial and save everything into a json file.
+Run these commands on your shell:
+```
+# Install dependencies
+pip install -r requirements.txt
 
-## What does the plot_historical_prices do?
+# Scrap historical data of all items being sold right now.
+scrapy runspider src/scrapper.py -o sales.json
 
-Using a json file acquired using scrapper.py, you can plot graphs of a particular item id, to see
-how does today compare with most days, when it comes to the item price.
+# Plot historical prices of item ITEM_ID.
+python src/plot_historical_prices.py --market-data-file sales.json --item-id {ITEM_ID}
+```
