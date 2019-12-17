@@ -48,5 +48,4 @@ class VendingScraper(scrapy.Spider):
         next_page = response.css('.next a::attr("href")').get()
 
         if next_page:
-            yield scrapy.Request(url=sale.get_item_url(
-                1), callback=self.scrap_historical_prices, cb_kwargs=dict(sale=sale))
+            yield scrapy.Request(url=next_page, callback=self.scrap_historical_prices, cb_kwargs=dict(sale=sale))
