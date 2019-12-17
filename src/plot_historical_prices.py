@@ -21,9 +21,10 @@ def analyze_market_data(market_data_file, item_id):
                 sales.append(sale)
     sales.sort()
     datetimes = [sale.sale_date for sale in sales]
-    prices = [sale.price for sale in sales]
+    prices = [int(sale.price) / 1_000_000 for sale in sales]
 
     pyplot.plot(datetimes, prices)
+    pyplot.ylabel("Million Zenies")
     pyplot.show()
 
 
